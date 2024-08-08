@@ -32,7 +32,7 @@ cd(scriptFolder);
  %  load('dataset/240712A1/240712A1.mat');
  %  load('dataset/240712D2/240712D2.mat');
 %  load('dataset/240718A1/240718A1.mat');
-  load('dataset/240718A2/240718A2.mat');
+%  load('dataset/240718A2/240718A2.mat');
  % load('dataset/240718A3/240718A3.mat');
 % load('dataset/240718B1/240718B1.mat');
 % load('dataset/240718B2/240718B2.mat');
@@ -40,6 +40,7 @@ cd(scriptFolder);
 %
 % load('dataset/240727B1CAN/240727B1CAN.mat');
 % load('dataset/240727B2/240727B2.mat');
+load('dataset/240805A/240805A1.mat');
 
    
 
@@ -84,7 +85,7 @@ opt.gnss_delay = 0;              % GNSS量测延迟 sec
 opt.gnss_lever_arm = 0*[-0.4; -1.31; 0.53]; %GNSS杆臂长度 b系下（右-前-上）
 
 % 初始状态方差:    姿态       ENU速度  水平位置      陀螺零偏                加速度计零偏        安装俯仰角 安装航向角
-opt.P0 = diag([[2 2 10]*D2R, [1 1 1], [5 5 5], 0.1*D2R*ones(1,3), 1e-2*GRAVITY*ones(1,3)])^2;
+opt.P0 = diag([[5 5 10]*D2R, [1 1 1], [5 5 5], 0.1*D2R*ones(1,3), 1e-2*GRAVITY*ones(1,3)])^2;
 N = length(opt.P0);
 % 系统方差:         角度随机游走          速度随机游走                     角速度随机游走            加速度随机游走
 opt.Q = diag([(0.1*D2R)*ones(1,3), (4/60)*ones(1,3), 0*ones(1,3), 1/3600*D2R*ones(1,3), 0*GRAVITY*ones(1,3)])^2;
